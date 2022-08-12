@@ -7,12 +7,12 @@
 </head>
 <body>
 <h1>Edit user</h1>
-<form action="/edit" th:method="PATCH" th:action="@{/edit}" th:object="${user}">
+<form action="/edit" th:method="PUT" th:action="@{/edit}" th:object="${user}">
     <table>
         <tr>
             <td>
-                <label for="userId">UserId</label>
-                <input  th:field="*{userId}" id="userId" >
+                <label for="id">UserId</label>
+                <input  th:field="*{id}" id="id" >
             </td>
         </tr>
         <tr>

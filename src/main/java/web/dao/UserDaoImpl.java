@@ -34,12 +34,11 @@ public class UserDaoImpl implements UserDao {
     @Override
     @Transactional
     public void updateUser(User user) {
-        entityManager.merge(user);
+      entityManager.merge(user);
         entityManager.flush();
     }
     @Override
     public void removeUser(int id) {
-
         entityManager.remove(getUserById(id));
     }
 

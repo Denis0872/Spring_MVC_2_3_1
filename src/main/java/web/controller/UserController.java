@@ -43,9 +43,11 @@ public class UserController {
 //            this.userService.updateUser(user);
 //            return "redirect:/";
 //    }
-    @RequestMapping(value = "edit", method = RequestMethod.PATCH)
+
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
     public String update2(@ModelAttribute("users") User user){
             this.userService.updateUser(user);
+
         return "redirect:/";
     }
 //    @PostMapping ("/edit")
@@ -74,7 +76,7 @@ public class UserController {
 //        }
 //    }
     @RequestMapping("remove/{id}")
-    public String removePerson(@PathVariable("id") int id){
+    public String removeUser(@PathVariable("id") int id){
         this.userService.removeUser(id);
         return "redirect:/";
     }
