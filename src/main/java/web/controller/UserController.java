@@ -65,15 +65,7 @@ public class UserController {
             userService.addUser(user);
             return "redirect:/";
     }
-//    @PatchMapping("/edit")
-//    public String update(@Valid User user, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            return "edit";
-//        } else {
-//            userService.updateUser(user);
-//            return "/";
-//        }
-//    }
+
     @RequestMapping("remove/{id}")
     public String removeUser(@PathVariable("id") int id){
         this.userService.removeUser(id);
