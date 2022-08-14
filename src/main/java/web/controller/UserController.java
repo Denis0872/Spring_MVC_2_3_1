@@ -47,7 +47,6 @@ public class UserController {
     @RequestMapping(value = "edit", method = RequestMethod.POST)
     public String update2(@ModelAttribute("users") User user){
             this.userService.updateUser(user);
-
         return "redirect:/";
     }
 //    @PostMapping ("/edit")
@@ -56,12 +55,12 @@ public class UserController {
 //    return "redirect:/";
 //}
 
-    @GetMapping("/new")
+    @GetMapping("/create")
     public String addUser(User user) {
         return "create";
     }
 
-    @PostMapping("/new")
+    @PostMapping("/create")
     public String addUser2(@ModelAttribute("user") User user) {
             userService.addUser(user);
             return "redirect:/";

@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Edit user</h1>
-<form action="/edit" th:method="PUT" th:action="@{/edit}" th:object="${user}">
+<form th:method="Post" th:action="@{/edit}" th:object="${user}">
     <table>
         <tr>
             <td>
