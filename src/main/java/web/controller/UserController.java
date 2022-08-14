@@ -12,7 +12,8 @@ import web.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
 
-import javax.validation.Valid;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
@@ -71,6 +72,20 @@ public class UserController {
         this.userService.removeUser(id);
         return "redirect:/";
     }
+ //   ------------------------------------------------
+//    @GetMapping("/userParam")
+//    public String paramUser(HttpServletRequest request) {
+//        String name =request.getParameter("name");
+//        String surname =request.getParameter("surname");
+//        System.out.println("hi "+ name+" "+surname);
+//        return "userParam";
+//    }
+//    @GetMapping("/userParam")
+//    public String paramUser2(@RequestParam ("name") String name, @RequestParam ("surname") String surname) {
+//
+//        System.out.println("hi "+ name+" "+surname);
+//        return "userParam";
+//    }
 
 
 }
