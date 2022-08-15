@@ -38,7 +38,7 @@ public class UserController {
     }
 
 
-    @PostMapping("edit")
+    @PatchMapping("edit")
     public String update2(@ModelAttribute("users") User user){
             this.userService.updateUser(user);
         return "redirect:/";
