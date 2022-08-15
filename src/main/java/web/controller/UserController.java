@@ -12,14 +12,11 @@ import web.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-
 
 @Controller
 
 public class UserController {
-        User user=new User();
+
         private  UserService userService;
     @Autowired()
     public UserController(UserService userService) {
@@ -27,7 +24,7 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping("/")
     public String users(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "users";
@@ -39,22 +36,14 @@ public class UserController {
         model.addAttribute(userService.getUserById(id));
         return "edit";
     }
-//    @PatchMapping ("/edit")
-//    public String update2(User user) {
-//            this.userService.updateUser(user);
-//            return "redirect:/";
-//    }
 
-    @RequestMapping(value = "edit", method = RequestMethod.POST)
+
+    @PostMapping("edit")
     public String update2(@ModelAttribute("users") User user){
             this.userService.updateUser(user);
         return "redirect:/";
     }
-//    @PostMapping ("/edit")
-//    public String update3(@ModelAttribute("user") User user) {
-//    this.userService.updateUser(user);
-//    return "redirect:/";
-//}
+
 
     @GetMapping("/create")
     public String addUser(User user) {
@@ -67,25 +56,10 @@ public class UserController {
             return "redirect:/";
     }
 
-    @RequestMapping("remove/{id}")
+    @DeleteMapping("remove/{id}")
     public String removeUser(@PathVariable("id") int id){
         this.userService.removeUser(id);
         return "redirect:/";
     }
- //   ------------------------------------------------
-//    @GetMapping("/userParam")
-//    public String paramUser(HttpServletRequest request) {
-//        String name =request.getParameter("name");
-//        String surname =request.getParameter("surname");
-//        System.out.println("hi "+ name+" "+surname);
-//        return "userParam";
-//    }
-//    @GetMapping("/userParam")
-//    public String paramUser2(@RequestParam ("name") String name, @RequestParam ("surname") String surname) {
-//
-//        System.out.println("hi "+ name+" "+surname);
-//        return "userParam";
-//    }
-
 
 }
