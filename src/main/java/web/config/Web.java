@@ -17,7 +17,6 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @Configuration
 @ComponentScan(basePackages = {"web"})
 @EnableWebMvc
-@PropertySource("classpath:application.properties")
 public class Web implements WebMvcConfigurer{
     private final ApplicationContext applicationContext;
 
