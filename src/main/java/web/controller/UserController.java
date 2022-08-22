@@ -1,5 +1,6 @@
 package web.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -14,14 +15,10 @@ import web.model.User;
 
 
 @Controller
-
+@AllArgsConstructor
 public class UserController {
 
         private  UserService userService;
-    @Autowired()
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
 
     @GetMapping("/")
@@ -29,29 +26,29 @@ public class UserController {
         model.addAttribute("users", userService.getAllUsers());
         return "users";
     }
-//
+
 
     @GetMapping("edit/{id}")
-    public String update(@PathVariable("id") int id, Model model) {
+    public String updateUserGet(@PathVariable("id") int id, Model model) {
         model.addAttribute(userService.getUserById(id));
         return "edit";
     }
 
 
     @PatchMapping("edit")
-    public String update2(@ModelAttribute("users") User user){
+    public String updateUserPost( User user){
             this.userService.updateUser(user);
         return "redirect:/";
     }
 
 
     @GetMapping("/create")
-    public String addUser(User user) {
+    public String addUserGet(User user) {
         return "create";
     }
 
     @PostMapping("/create")
-    public String addUser2(@ModelAttribute("user") User user) {
+    public String addUserPost(@ModelAttribute("user") User user) {
             userService.addUser(user);
             return "redirect:/";
     }
